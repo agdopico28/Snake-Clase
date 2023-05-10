@@ -44,10 +44,25 @@ public class Util {
         Image images = icons[foodType.ordinal()].getImage();
         g.drawImage(images, col*squareWidth, row * squareHeight, squareWidth, squareHeight, null);
     }
-        /*int x = col* squareWidth;
-        int y = row * squareHeight;
-        Image image = new ImageIcon(b.getClass().getResource(filename)).getImage();*/
-        //g.drawImage(image, y, y, null);
-    
+       
+    public static void drawSnake(Graphics g, int row, int col, int squareWidth, int squareHeight, NodeType nodeType){
+        ImageIcon icons[] = {
+            new ImageIcon(Util.class.getResource("/images/snake_cabezaArriba.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_cabezaDerecha.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_cabezaIzquierda.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_cabezaAbajo.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_colaArriba.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_colaDerecha.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_colaIzquierda.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_colaAbajo.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_cuerpo.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_cuerpoDeLado.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_giroIzquierdaArriba.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_giroIzquierdaDerecha.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_giroIzquierdaArriba.png")),
+            new ImageIcon(Util.class.getResource("/images/snake_giroIzquierda.png"))};
+        Image images = icons[nodeType.ordinal()].getImage();
+        g.drawImage(images, col*squareWidth, row * squareHeight, squareWidth, squareHeight, null);
+    }
 
 }

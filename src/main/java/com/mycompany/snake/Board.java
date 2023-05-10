@@ -165,13 +165,13 @@ public class Board extends javax.swing.JPanel implements InitGamer{
     public void setDeltaTime() {
         switch (ConfigData.instance.getlevel()) {
             case 0:
-                deltaTime = 350;
+                deltaTime = 175;
                 break;
             case 1:
-                deltaTime = 250;
+                deltaTime = 125;
                 break;
             case 2:
-                deltaTime = 150;
+                deltaTime = 75;
                 break;
             default:
                 throw new AssertionError();

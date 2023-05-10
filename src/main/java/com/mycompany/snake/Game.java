@@ -49,6 +49,15 @@ public class Game extends javax.swing.JFrame {
         jMenuBar.add(jMenu1);
 
         jMenu2.setText("Edit");
+        jMenu2.addMenuListener(new javax.swing.event.MenuListener() {
+            public void menuCanceled(javax.swing.event.MenuEvent evt) {
+            }
+            public void menuDeselected(javax.swing.event.MenuEvent evt) {
+                jMenu2MenuDeselected(evt);
+            }
+            public void menuSelected(javax.swing.event.MenuEvent evt) {
+            }
+        });
         jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jMenu2MouseClicked(evt);
@@ -58,7 +67,7 @@ public class Game extends javax.swing.JFrame {
             }
         });
 
-        jMenuItem1.setText("jMenuItem1");
+        jMenuItem1.setText("Setting");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -74,6 +83,7 @@ public class Game extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        board.pausedGame();
         options = new OptionsDialog(this, true);
         options.setInitGamer(board);
         options.setVisible(true);
@@ -86,6 +96,10 @@ public class Game extends javax.swing.JFrame {
     private void jMenu2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MousePressed
         board.pausedGame();
     }//GEN-LAST:event_jMenu2MousePressed
+
+    private void jMenu2MenuDeselected(javax.swing.event.MenuEvent evt) {//GEN-FIRST:event_jMenu2MenuDeselected
+        board.continueGame();
+    }//GEN-LAST:event_jMenu2MenuDeselected
 
     /**
      * @param args the command line arguments
