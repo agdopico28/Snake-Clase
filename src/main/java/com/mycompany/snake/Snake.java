@@ -41,7 +41,7 @@ public class Snake {
         }
     }
     
-    public void printSnake(Graphics g, int squareWidth, int squareHeight){
+    /*public void printSnake(Graphics g, int squareWidth, int squareHeight){
         boolean isHead = true;
         Node nodePrint;
         for(int i = 0; i < list.size(); i++){
@@ -52,6 +52,54 @@ public class Snake {
                 isHead = false;
             }else{
                  SquareType squareType = SquareType.BODY;
+                Util.drawSquare(g, nodePrint.getRow(), nodePrint.getCol(), squareWidth, squareHeight, squareType);
+            }
+        }
+    }*/
+    
+    public void printSnake(Graphics g, int squareWidth, int squareHeight){
+        Node nodePrint;
+        for(int i = 0; i < list.size(); i++){
+            nodePrint = list.get(i);
+            if(nodePrint == list.get(0)){
+                NodeType nodeType;
+                int row = nodePrint.getRow();
+                int col = nodePrint.getCol();
+                switch (direction) {
+                    case UP:
+                        Util.drawSnake(g, row, col, squareWidth, squareHeight, NodeType.N_HEAD);
+                        break;
+                    case DOWN:
+                        Util.drawSnake(g, row, col, squareWidth, squareHeight, NodeType.S_HEAD);
+                        break;
+                    case RIGHT:
+                        Util.drawSnake(g, row, col, squareWidth, squareHeight, NodeType.E_HEAD);
+                        break;
+                    case LEFT:
+                        Util.drawSnake(g, row, col, squareWidth, squareHeight, NodeType.W_HEAD);
+                        break;
+                    default:
+                        throw new AssertionError();
+                }
+            }else if(nodePrint == list.get(list.size() -1)){
+                NodeType nodeType;
+                int row = nodePrint.getRow();
+                int col = nodePrint.getCol();
+                Node previousNode = list.get(list.size() -2 );
+                int preRow = previousNode.getRow();
+                int preCol = previousNode.getCol();
+                if(row - 1 == preRow && col == preCol){
+                    nodeType = NodeType.N_TAIL;
+                }else if(row + 1 == preRow && col == preCol){
+                    nodeType = NodeType.S_TAIL;
+                }else if(row  == preRow && col + 1== preCol){
+                    nodeType = NodeType.E_TAIL;
+                }else {
+                    nodeType = NodeType.W_TAIL;
+                }
+                Util.drawSnake(g, row, col, squareWidth, squareHeight, nodeType);
+            }else{
+                SquareType squareType = SquareType.BODY;
                 Util.drawSquare(g, nodePrint.getRow(), nodePrint.getCol(), squareWidth, squareHeight, squareType);
             }
         }
